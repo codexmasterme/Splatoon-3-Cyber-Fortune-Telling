@@ -2,17 +2,14 @@
 name: Deploy Vite App to GitHub Pages
 
 on:
-  # 当代码推送到 main 分支时触发运行（如果你的分支叫 master，就把 main 改成 master）
   push:
     branches: ["main"]
 
-# 设置权限以允许 GitHub Token 部署到 Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 确保不会同时有两个部署任务在跑
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -30,8 +27,7 @@ jobs:
       - name: 安装 Node.js 环境
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 24
 
       - name: 安装依赖 (npm install)
         run: npm install
